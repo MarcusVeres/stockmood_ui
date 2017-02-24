@@ -1,0 +1,67 @@
+[
+    {
+        "id": "uuid:1",
+		"Text": "Whether in business or at McDonald’s, Warren loves a deal. We've brought this idea to saving children's lives: http://b-gat.es/2l5OdQ1 #TBT",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/BillGates/status/834751417466355713",
+		"User": {
+			"ScreenName": "Bill Gates",
+			"UserName": "BillGates",
+			"EmailAddress":"bill@gatesletter.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "2",
+		"Text": "this stock is great, isn't it?",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/BillGates/status/834751417466355713",
+		"User": {
+			"ScreenName": "Bill Gates",
+			"UserName": "BillGates",
+			"EmailAddress":"bill@gatesletter.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "3",
+		"Text": "ISN'T IT????",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/BillGates/status/834751417466355713",
+		"User": {
+			"ScreenName": "Bill Gates",
+			"UserName": "BillGates",
+			"EmailAddress":"bill@gatesletter.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "4",
+		"Text": "...",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/BillGates/status/834751417466355713",
+		"User": {
+			"ScreenName": "Bill Gates",
+			"UserName": "BillGates",
+			"EmailAddress":"bill@gatesletter.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "5",
+		"Text": "OP, pls respond",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/BillGates/status/834751417466355713",
+		"User": {
+			"ScreenName": "Bill Gates",
+			"UserName": "BillGates",
+			"EmailAddress":"bill@gatesletter.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    }
+]

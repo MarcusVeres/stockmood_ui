@@ -1,0 +1,67 @@
+[
+    {
+        "id": "uuid:1",
+		"Text": "I hate this. All of it!",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/SteveJobs/status/834751417466355713",
+		"User": {
+			"ScreenName": "Steve Jobs",
+			"UserName": "SteveJobs",
+			"EmailAddress":"steve@jobs.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "2",
+		"Text": "this is dumb",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/SteveJobs/status/834751417466355713",
+		"User": {
+			"ScreenName": "Steve Jobs",
+			"UserName": "SteveJobs",
+			"EmailAddress":"steve@jobs.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "3",
+		"Text": "I don't approve at all",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/SteveJobs/status/834751417466355713",
+		"User": {
+			"ScreenName": "Steve Jobs",
+			"UserName": "SteveJobs",
+			"EmailAddress":"steve@jobs.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "4",
+		"Text": "I could do better",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/SteveJobs/status/834751417466355713",
+		"User": {
+			"ScreenName": "Steve Jobs",
+			"UserName": "SteveJobs",
+			"EmailAddress":"steve@jobs.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    },
+    {
+        "id": "5",
+		"Text": "just kidding!",
+		"NumberOfRetweets": 594,
+		"NumberOfLikes": 3001,
+		"Permalink": "https://twitter.com/SteveJobs/status/834751417466355713",
+		"User": {
+			"ScreenName": "Steve Jobs",
+			"UserName": "SteveJobs",
+			"EmailAddress":"steve@jobs.com",
+			"NumberOfFollowers": "33.4M"
+		}
+    }
+]

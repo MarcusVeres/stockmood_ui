@@ -1,0 +1,275 @@
+
+// imports
+
+@import 'fonts'
+@import 'colors'
+@import 'mixins'
+@import 'properties'
+
+
+// variables
+
+// $mobile_cutoff: 640px
+$mobile_cutoff: 480px
+$desktop_cutoff: 980px
+
+$max_content_width: 1200px
+
+
+// properties and mixins
+.clearfix
+    clear: both
+
+
+// semantic-ui overrides
+.ui.flush.button > .icon:not(.button)
+    margin: 0
+
+.ui.flush.button:not(.icon) > .icon:not(.button):not(.dropdown)
+    margin: 0
+
+
+// html elements
+
+html, body 
+    margin: 0
+    padding: 0
+    font-family: 'Open Sans', sans-serif
+    font-weight: 400
+    color: $light-slate
+    background: $white
+
+body
+    padding-bottom: 2rem
+
+h1, h2, h3, h4, h5, h6
+    font-family: 'Open Sans', serif
+    font-weight: 300 
+    // color: $q4-blue
+
+    &.display 
+        font-family: 'Sansita', sans-serif
+
+    &.shadow
+        @include text-shadow()
+
+$h1_size : 32px
+
+h1
+    font-size: $h1_size
+    vertical-align: middle
+    margin: 0
+    padding: 0
+
+h2
+    font-size: 24px
+    // margin: 0
+    // padding: 0
+
+hr 
+    height: 1px
+    border: none
+
+img.main-logo 
+    max-width: 64px
+
+
+// sections
+
+section
+    padding: 1rem 0
+    clear: both
+    width: 100%
+    // background-color: $pale-grey
+
+    &.flush
+        padding: 0
+
+    &.header
+        padding: 1.4rem 0
+        text-align: center
+        background: $white
+        vertical-align: middle
+        // @include grayscale-shadow( 12 , 0.2 )
+        border-bottom: 1px solid #CCC
+
+    &.core
+        padding-bottom: 120px
+
+    &.footer
+        background: $white
+        padding: 2rem
+        text-align: center
+
+
+// wrappers
+
+.content-wrapper
+
+    max-width: $max_content_width
+    margin: auto
+    padding: 0 2rem
+
+    &.flush
+        padding-top: 0
+        padding-bottom: 0
+
+    &.padded
+        padding-top: 2.4rem
+        padding-bottom: 2.8rem
+
+    &.spaced
+        padding-top: 6rem
+        padding-bottom: 6rem
+
+    &.tight
+        max-width: 400px
+
+    &.narrow
+        max-width: 720px
+
+    &.wide
+        max-width: 1440px
+
+    &.unlimited
+        max-width: none
+
+    // TODO : uncomment this when ready to go live
+    //@media screen and (max-width: 400px)
+        // padding: 0 !important
+
+
+// nav
+
+
+// components
+
+.hero 
+    padding: 2rem 0 2.4rem 0
+    background-size: cover
+    background-image: url('/static/img/crowd-bg.png')
+
+.search-field
+    max-width: 100px
+    width: 60%
+
+.inspector-pane
+    display: none
+
+    &.visible
+        display: block
+
+
+.collapsible-pane
+    background: $white
+    padding: 1.4rem 2rem 2.8rem 2rem
+    margin: 1.8rem 0 3rem 0
+
+    &.hidden
+        display: none
+
+.tweet-list
+    margin: 1.4rem 0 1.8rem 0
+
+    .ui.horizontal.list:not(.celled)>.item:first-child
+        padding-left: 1.4rem !important
+
+    .list .item
+        margin: 2px !important
+        padding: 0.2rem 0.5rem
+        cursor: pointer
+        transition: 0.3s all ease-in-out
+
+        &:hover
+            background: $white
+            @include border-radius( 4px )
+
+            .header 
+                transition: 0.3s all ease-in-out
+                color: $spice
+
+.tweet-view,
+.ui.link.cards
+
+    @include unstyled-list()
+    justify-content: center
+
+    &.list
+        .card
+            background: teal
+
+
+.ui.top.attached.tabular.menu > *
+    cursor: pointer
+    transition: all 0.3s ease-in-out
+
+    &:hover 
+        background: $white
+
+.ui.middle.aligned.divided.list.horizontal
+    text-align: center
+
+    .item 
+        border: none 
+        display: inline-block
+        // min-width: 360px
+        width: 250px
+        padding: 1.2rem 1.6rem
+        border: 1px solid $pale-grey
+        @include border-radius( 8px )
+        text-align: left 
+
+        @media-screen and max-width: 480px
+            width: 80%
+
+    // hide the phone number from the grid view
+    .phone-number
+        display: none
+
+
+// 
+
+.spacer_10
+    height: 10px
+.spacer_20
+    height: 20px
+.spacer_40
+    height: 40px
+.spacer_60
+    height: 60px
+.spacer_80
+    height: 80px
+
+.small-gap
+    height: 32px
+
+.gap
+    height: 800px
+
+
+// buttons
+
+// tables
+
+
+// lists
+
+.some-list
+    @include unstyled-list()
+    
+// forms
+
+
+// responsive hiders
+
+.show-mobile-only
+    display: none
+
+@media screen and (max-width: $mobile_cutoff)
+
+    .hide-from-mobile
+        display: none
+
+    .show-mobile-only
+        display: block
+

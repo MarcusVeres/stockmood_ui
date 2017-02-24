@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>StockMood</title>
+
+    <meta name="description" content="HTML Page">
+    <meta name="author" content="Team_StockMood">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css">
+    <link rel="stylesheet" href="/static/css/styles.min.css?v=1.0">
+
+</head>
+<body> 
+
+<div class="site-wrapper">
+
+    <section class="header">
+    <div class="content-wrapper">
+
+        <h1 class="display">
+            <i class="bar chart icon small"></i>
+            <span class="light-slate">Stock</span><span id="mood-color" class="spice">Mood</span>
+        </h1>
+
+    </div>
+    </section>
+
+	<div class="hero vertical masthead center aligned">
+		<div class="ui text container center aligned">
+			<h1 class="display white">
+				Corporate Sentiment Analysis
+			</h1>
+			<h2 class="white" style="margin-top: 0; padding-top: 1rem;">
+				Adding social context to the numbers. 
+			</h2>
+		</div>
+	</div>
+
+    <section class="core" id="app">
+    <div class="content-wrapper">
+
+        <div class="ui secondary menu">
+
+            <div class="item">
+                <div class="ui icon buttons">
+                    <button id="set-view-list" class="ui flush button" v-bind:class="{ active: isListView }">
+                        <i class="list layout icon"></i>
+                    </button>
+                    <button id="set-view-grid" class="ui flush button" v-bind:class="{ active: isGridView }">
+                        <i class="grid layout icon"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="ui action left icon input">
+                    <i class="search icon"></i>
+                    <input class="search-field" v-model="message" type="text" placeholder="Filter">
+                    <button class="ui flush button" v-on:click="clearSearch">
+                        <span class="hide-from-mobile">Clear</span>
+                        <span class="show-mobile-only"><i class="delete icon"></i></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="right menu">
+                <div class="item">
+                    <div class="ui buttons">
+                        <div id="refresh-data" class="ui fade animated button" tabindex="0">
+                            <div class="hidden content">
+                                Refresh
+                            </div>
+                            <div class="visible content">
+                                <i class="refresh icon"></i>
+                            </div>
+                        </div>
+                        <div id="update-json-file" class="ui fade animated button" tabindex="0">
+                            <div class="visible content">
+                                <i class="download icon"></i>
+                            </div>
+                            <div class="hidden content">
+                                Export
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="ui stackable grid">
+        <div class="column">
+            <h2>
+                <i class="heartbeat icon silver"></i>Overview
+            </h2>
+
+			<div id="overview-bar" class="ui indicating progress" data-value="1" data-total="20" id="example2">
+				<div class="bar">
+					<div class="progress"></div>
+				</div>
+				<div class="label">Public Sentiment</div>
+			</div>
+
+        </div>
+        </div>
+        
+        <div class="ui two column stackable grid">
+        <div class="column">
+            <h2>
+                <i class="smile icon silver"></i>Positive
+            </h2>
+			<hr class="rule bg-avocado"/>
+            <div class="tweet-list">
+                <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
+                    <div class="item" v-for="tweet in filteredTweets" v-on:click="selectTweet( tweet.id )">
+
+                        <div class="right floated content">
+                            <a :href="tweet.Permalink" target="_blank" class="ui flush button" v-bind:class="{ disabled : !tweet.Permalink }">
+                                <i class="share icon"></i>
+                            </a>
+                        </div>
+                        <img class="ui avatar image" src="http://placehold.it/64/64/">
+                        <div class="content">
+                            <div class="header">
+                                {{ tweet.User.ScreenName }}
+                                <span class="soft-grey">@{{ tweet.User.UserName }}</span>
+                            </div>
+							<p>
+                                {{ tweet.Text }}
+							</p>
+                                {{ tweet.NumberOfRetweets }} <i class="retweet icon"></i>
+                            {{ tweet.NumberOfLikes }} <i class="heart icon"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- / column -->
+        <div class="column">
+            <h2>
+                <i class="frown icon silver"></i>Negative
+            </h2>
+			<hr class="rule bg-cherry"/>
+            <div class="tweet-list">
+                <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
+                    <div class="item" v-for="tweet in filteredNegativeTweets">
+
+                        <div class="right floated content">
+                            <a :href="tweet.Permalink" target="_blank" class="ui flush button" v-bind:class="{ disabled : !tweet.Permalink }">
+                                <i class="share icon"></i>
+                            </a>
+                        </div>
+                        <img class="ui avatar image" src="http://placehold.it/64/64/">
+                        <div class="content">
+                            <div class="header">
+                                {{ tweet.User.ScreenName }}
+                                <span class="soft-grey">@{{ tweet.User.UserName }}</span>
+                            </div>
+							<p>
+                                {{ tweet.Text }}
+							</p>
+                                {{ tweet.NumberOfRetweets }} <i class="retweet icon"></i>
+                            {{ tweet.NumberOfLikes }} <i class="heart icon"></i>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div><!-- / column -->
+        </div><!-- / two column stackable grid -->
+
+        <div class="ui two column stackable grid">
+        <div class="column">
+            <h2>
+                <i class="warning sign icon silver small"></i>Possible Activists
+            </h2>
+			<hr class="rule bg-tangerine"/>
+            <div class="tweet-list">
+                <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
+                    <div class="item" v-for="tweet in someActivists">
+
+                        <div class="right floated content">
+							<span class="">{{ tweet.User.NumberOfFollowers }} <i class="user icon"></i></span>
+                            <a :href="tweet.Permalink" target="_blank" class="ui flush button" v-bind:class="{ disabled : !tweet.Permalink }">
+                                <i class="share icon"></i>
+                            </a>
+                        </div>
+                        <img class="ui avatar image" src="http://placehold.it/64/64/">
+                        <div class="content">
+                            <div class="header">
+                                {{ tweet.User.ScreenName }}
+                                <span class="soft-grey">@{{ tweet.User.UserName }}</span>
+								
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <h2>
+                <i class="comments icon silver small"></i>Trending Subjects
+            </h2>
+			<hr class="rule bg-sky"/>
+            <div class="tweet-list">
+                <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
+                    <div class="item" v-for="word in filteredTrendingWords">
+
+                        <div class="right floated content">
+                            <div class="ui label">{{ word.Value }}</div>
+                        </div>
+                        <div class="content">
+                            {{ word.Key }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </div>
+    </section>
+
+    <!-- Footer
+    -->
+    <section class="footer">
+    <div class="content-wrapper">
+        &copy; 2017 - Best Team Evar. All rights reserved.
+    </div>
+    </section>
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="/static/js/helper.js"></script>
+    <script src="/static/js/scripts.min.js"></script>
+
+</div>
+</body>
+</html>
+
