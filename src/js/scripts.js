@@ -21,7 +21,6 @@
             helper.loadJson( 'https://7skia38tri.execute-api.us-east-1.amazonaws.com/Dev/getpublicsentiment' , function( dataObject )
             {
                 expo.vue.popularity = dataObject.publicSentiment;
-                console.log( "publicsentiment" , dataObject );
                 $('#overview-bar').progress({
                     percent: parseInt( dataObject.publicSentiment )
                 });
@@ -69,13 +68,8 @@
 
         bindButtons : function()
         {
-            // console.log( "binding buttons" );
-            // document.getElementById( 'add-tweet' ).addEventListener( 'click' , expo.processTweet );
             document.getElementById( 'set-view-list' ).addEventListener( 'click' , expo.setDisplayList );
             document.getElementById( 'set-view-grid' ).addEventListener( 'click' , expo.setDisplayGrid );
-            // document.getElementById( 'update-json-file' ).addEventListener( 'click' , expo.updateJsonFile );
-            // document.getElementById( 'reset-json-file' ).addEventListener( 'click' , expo.resetJsonFile );
-
             // document.getElementById( 'refresh-data' ).addEventListener( 'click' , expo.refreshData );
             document.getElementById( 'refresh-data' ).addEventListener( 'click' , expo.loadContents );
         },
@@ -122,7 +116,6 @@
                     },
 
                     someActivists : function() {
-                        console.log( "activists" , this.negativeTweets[ 0 ] );
                         if( this.negativeTweets.length > 0 && this.tweets.length > 0 ){
                             return [
                                 this.negativeTweets[0],
