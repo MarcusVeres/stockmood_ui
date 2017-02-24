@@ -115,14 +115,21 @@
                         })
                     },
 
-                    someActivists : function() {
-                        if( this.negativeTweets.length > 0 && this.tweets.length > 0 ){
-                            return [
+                    filteredActivists : function() {
+                        var self = this;
+                        if( self.negativeTweets.length > 0 && self.tweets.length > 0 ){
+                            self.activists = [
                                 this.negativeTweets[0],
                                 this.tweets[0],
                                 this.negativeTweets[1],
                                 this.tweets[1],
+                                this.negativeTweets[2],
+                                this.tweets[2],
                             ]
+                            return self.activists.filter(function (tweet) {
+                                var searchRegex = new RegExp(self.message, 'i')
+                                return searchRegex.test( tweet.Text ) || searchRegex.test( tweet.User.ScreenName )
+                            })
                         } 
                         else {
                             return null;

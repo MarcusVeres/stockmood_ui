@@ -187,7 +187,7 @@
 			<hr class="rule bg-tangerine"/>
             <div class="tweet-list">
                 <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
-                    <div class="item" v-for="tweet in someActivists">
+                    <div class="item" v-for="tweet in filteredActivists">
 
                         <div class="right floated content">
 							<span class="">{{ tweet.User.NumberOfFollowers }} <i class="user icon"></i></span>
