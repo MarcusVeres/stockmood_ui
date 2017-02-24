@@ -20,20 +20,21 @@
             // helper.loadJson( '/static/data/popularity.json' , function( dataObject )
             helper.loadJson( 'https://7skia38tri.execute-api.us-east-1.amazonaws.com/Dev/getpublicsentiment' , function( dataObject )
             {
-                expo.vue.popularity = dataObject.score;
+                expo.vue.popularity = dataObject.publicSentiment;
                 console.log( "publicsentiment" , dataObject );
                 $('#overview-bar').progress({
-                    percent: parseInt( dataObject.score )
+                    percent: parseInt( dataObject.publicSentiment )
                 });
             })
 
-            helper.loadJson( '/static/data/negative-tweets.json' , function( tweetsData )
+            // helper.loadJson( '/static/data/negative-tweets.json' , function( tweetsData )
+            helper.loadJson( 'https://7skia38tri.execute-api.us-east-1.amazonaws.com/Dev/gettweets?limit=8&sortOrder=-1' , function( tweetsData )
             {
                 expo.vue.negativeTweets = tweetsData;
             })
 
             // helper.loadJson( '/static/data/positive-tweets.json' , function( tweetsData )
-            helper.loadJson( 'https://7skia38tri.execute-api.us-east-1.amazonaws.com/Dev/gettweets' , function( tweetsData )
+            helper.loadJson( 'https://7skia38tri.execute-api.us-east-1.amazonaws.com/Dev/gettweets?limit=8&sortOrder=1' , function( tweetsData )
             {
                 expo.vue.tweets = tweetsData;
             })
@@ -126,6 +127,8 @@
                             return [
                                 this.negativeTweets[0],
                                 this.tweets[0],
+                                this.negativeTweets[1],
+                                this.tweets[1],
                             ]
                         } 
                         else {

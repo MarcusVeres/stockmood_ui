@@ -116,14 +116,13 @@
 			<hr class="rule bg-avocado"/>
             <div class="tweet-list">
                 <div class="ui middle aligned divided list" v-bind:class="{ aligned : isListView , horizontal : isGridView }">
-                    <div class="item" v-for="tweet in filteredTweets" v-on:click="selectTweet( tweet.id )">
+                    <div class="item" v-for="tweet in filteredTweets">
 
                         <div class="right floated content">
                             <a :href="tweet.Permalink" target="_blank" class="ui flush button" v-bind:class="{ disabled : !tweet.Permalink }">
                                 <i class="share icon"></i>
                             </a>
                         </div>
-                        <img class="ui avatar image" src="http://placehold.it/64/64/">
                         <div class="content">
                             <div class="header">
                                 {{ tweet.User.ScreenName }}
@@ -132,7 +131,11 @@
 							<p>
                                 {{ tweet.Text }}
 							</p>
-                                {{ tweet.NumberOfRetweets }} <i class="retweet icon"></i>
+                            {{ tweet.Score }} <i class="trophy icon"></i>
+                            {{ tweet.Magnitude }} <i class="announcement icon"></i>
+                            {{ tweet.PopularityScore }} <i class="users icon"></i>
+                            <span class="">|</span>
+                            {{ tweet.NumberOfRetweets }} <i class="retweet icon"></i>
                             {{ tweet.NumberOfLikes }} <i class="heart icon"></i>
                         </div>
 
@@ -154,7 +157,6 @@
                                 <i class="share icon"></i>
                             </a>
                         </div>
-                        <img class="ui avatar image" src="http://placehold.it/64/64/">
                         <div class="content">
                             <div class="header">
                                 {{ tweet.User.ScreenName }}
@@ -163,7 +165,11 @@
 							<p>
                                 {{ tweet.Text }}
 							</p>
-                                {{ tweet.NumberOfRetweets }} <i class="retweet icon"></i>
+                            {{ tweet.Score }} <i class="trophy icon"></i>
+                            {{ tweet.Magnitude }} <i class="announcement icon"></i>
+                            {{ tweet.PopularityScore }} <i class="users icon"></i>
+                            <span class="">|</span>
+                            {{ tweet.NumberOfRetweets }} <i class="retweet icon"></i>
                             {{ tweet.NumberOfLikes }} <i class="heart icon"></i>
                         </div>
 
